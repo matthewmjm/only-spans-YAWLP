@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import RestaurantCard from './RestaurantCard';
 
 
 const apiKey = 
@@ -24,20 +25,24 @@ export default function RestaurantsContainer() {
         .then(({businesses}) => dispatch({type: "SET_RESTAURANTS", restaurants: businesses}))
     }, [])
 
-    const showRestaurants = () => restaurants.map(restaurant => {
-        return <Text>{restaurant.name}</Text>
+    const showRestaurants = () => restaurants.map((restaurant, i) => {
+        return <RestaurantCard 
+            key={restaurant.id} 
+            restaurant={restaurant} 
+            index={i + 1}
+        />
     })
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             {showRestaurants()}
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        margin: 15,
     }
 });

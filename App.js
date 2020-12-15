@@ -2,7 +2,7 @@ import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers/index';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView } from 'react-native';
 import RestaurantsContainer from './components/RestaurantsContainer';
 
 export default function App() {
@@ -10,9 +10,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <RestaurantsContainer />
-      </View>
+      </SafeAreaView>
     </Provider>
   );
 }
@@ -20,8 +20,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(255, 255, 255)',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
+    width: '100%',
+    backgroundColor: '#ffffff',
+  },
 });
