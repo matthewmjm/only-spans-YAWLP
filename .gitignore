@@ -9,5 +9,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# hide API key
+.env
+
 # macOS
 .DS_Store
